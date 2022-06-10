@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from 'react-router-dom'
 import { getEvents } from "./EventManager.js"
 
 export const EventList = (props) => {
+    const history = useHistory();
     const [ events, setEvents ] = useState([])
 
     useEffect(() => {
@@ -9,6 +11,14 @@ export const EventList = (props) => {
     }, [])
 
     return (
+        <>
+        <header>
+            <button className="btn btn-2 btn-sep icon-create"
+                onClick={() => {
+                    history.push({ pathname: "/events/new" })
+                }}
+            >Register New Event</button>
+        </header>
         <article className="events">
             {
                 events.map(event => {
@@ -21,5 +31,6 @@ export const EventList = (props) => {
                 })
             }
         </article>
+        </>
     )
 }

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from 'react-router-dom'
 import { getGames } from "./GameManager.js"
 
 export const GameList = (props) => {
+    const history = useHistory();
     const [ games, setGames ] = useState([])
 
     useEffect(() => {
